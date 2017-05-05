@@ -2,6 +2,7 @@ package transports;
 
 import people.Cop;
 import people.Fireman;
+import people.Man;
 import people.SimpleMan;
 
 import java.util.ArrayList;
@@ -26,10 +27,10 @@ public class FireCar extends Car {
             i++;
         }*/
 
-        Object[] ar1 = {"zxc1", "zxc2", "zxc3", "zxc3"};
+        /*Object[] ar1 = {"zxc1", "zxc2", "zxc3", "zxc3"};
         Object[] ar2 = {"qwe1", "qwe2", "qwe1", "qwe2", "qwe1", "qwe2", "qwe2"};
         ArrayList<Object> arr = seatsInProcess(ar1, ar2);
-        System.out.println(arr);
+        System.out.println(arr);*/
         /*while (i < arr.size()) {
             System.out.print(i + ") ");
             System.out.println(arr.get(i));
@@ -43,35 +44,49 @@ public class FireCar extends Car {
         Cop cop = new Cop();
         Fireman fireman = new Fireman();
         SimpleMan simpleMan = new SimpleMan();
+        cop.setNameMan("COP");
+        fireman.setNameMan("Fireman");
+        simpleMan.setNameMan("Simple");
 
-        Object[] allowedPeople = {cop, simpleMan, fireman};
-        Object[] actualPeople = {fireman, cop, simpleMan};
-        ArrayList<Object> arr0 = compareArrays(allowedPeople, actualPeople);
+        Man[] allowedPeople = {cop, simpleMan, fireman};
+        Man[] actualPeople = {fireman, cop};
+        ArrayList<Man> arr0 = compareArrays(allowedPeople, actualPeople);
         System.out.println(arr0);
         //System.out.println(seatsInProcess(10, allowedPeople));
     }
 
     //ПОРІВНЯННЯ ДВОХ МАСИВІВ - МАСИВУ ІЗ ДОЗВОЛЕНИМ СПИСКОМ ОБ'ЄКТІВ ТА ВХІДНОГО НЕРОЗПОДІЛЕНОГО МАСИВУ
     //TODO - ОТРИМАТИ ВІДФІЛЬТРОВАНИЙ МАСИВ!!!
-    public static ArrayList<Object> compareArrays(Object[] in, Object[] out) {
-        List list = Arrays.asList(in);
-        ArrayList<Object> arrayListAllowed = new ArrayList<>(list);
-        List list2 = Arrays.asList(out);
-        ArrayList<Object> arrayListPresent = new ArrayList<>(list2);
-        ArrayList<Object> peopleOutFiltered = new ArrayList<>();
-        for (int i = 0; i < arrayListAllowed.size()-1; i++) {
-            for (int j = 0; j < arrayListPresent.size()-1; j++) {
-                /*if (Arrays.asList(b).contains(Arrays.asList(a))){
-                    bool = true;
-                }*/
-                //if (arrayListPresent.size() <= arrayListAllowed.size()) {
-                    if (!(arrayListPresent.get(j).equals(arrayListAllowed.get(i)))) {
-                        arrayListPresent.remove(arrayListPresent.get(j));
-                    }
-                //}
+    public static ArrayList<Man> compareArrays(Man[] in, Man[] out) {
+        ArrayList<Man> results = new ArrayList();
+        int i = 0;
+        for (Man person1 : in) {
+            for (Man person2 : out) {
+                if (person1.getNameMan()==person2.getNameMan()) {
+                    results.add(person2);
+                }
             }
+            // fruit is an element of the `fruits` array.
         }
-        return arrayListPresent;
+
+//        List list = Arrays.asList(in);
+//        ArrayList<Object> arrayListAllowed = new ArrayList<>(list);
+//        List list2 = Arrays.asList(out);
+//        ArrayList<Object> arrayListPresent = new ArrayList<>(list2);
+//        ArrayList<Object> peopleOutFiltered = new ArrayList<>();
+//        for (int i = 0; i < arrayListAllowed.size()-1; i++) {
+//            for (int j = 0; j < arrayListPresent.size()-1; j++) {
+//                /*if (Arrays.asList(b).contains(Arrays.asList(a))){
+//                    bool = true;
+//                }*/
+////                if (arrayListPresent.size() <= arrayListAllowed.size()) {
+//                    if (!(arrayListPresent.get(j).getNameMan() == arrayListAllowed.get(i).getNameMan())) {
+//                        arrayListPresent.remove(arrayListPresent.get(j));
+//                    }
+////                }
+//            }
+//        }
+        return results;
     }
 
     //ФУНКЦІЯ ПОСАДКИ ПАСАЖИРІВ В ТРАНСПОРТ

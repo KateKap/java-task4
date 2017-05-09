@@ -23,4 +23,5 @@ public class Man {
         this.typeMan = typeMan;
     }
 
+
 }

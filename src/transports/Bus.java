@@ -1,19 +1,30 @@
 package transports;
 
-import people.Cop;
-import people.Fireman;
-import people.SimpleMan;
-
 import java.util.ArrayList;
 
 /**
  * Created by Kate on 29.04.2017.
  */
 public class Bus extends Transport {
-    private ArrayList<Object> tr = new ArrayList<>();
-    Cop cop = new Cop();
-    SimpleMan simpleMan= new SimpleMan();
-    Object[] tr2 = {cop, simpleMan};
+    private static final ArrayList<String> typePassAllowed = new ArrayList<String>(){{
+        add("cop");
+        add("fireman");
+        add("simpleMan");
+    }};
 
+    public ArrayList<String> getTypePassAllowed() {
+        return typePassAllowed;
+    }
 
+    Bus(Bus ob) { // передача объекта конструктору
+        super(ob);
+        //typePassAllowed = ob.typePassAllowed;
+    }
+    public Bus(){
+        super();
+    }
+
+    public Bus(int seats){
+        super(seats);
+    }
 }

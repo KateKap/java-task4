@@ -7,12 +7,8 @@ import java.util.ArrayList;
  */
 public class Transport {
         private String name;
-        //private String type;
+        private ArrayList<String> typePassAllowed;
         private int seatsNumber;
-    private Object pas;
-
-
-
 
     public String getName() {
         return name;
@@ -22,13 +18,13 @@ public class Transport {
         this.name = name;
     }
 
-    /*public String getType() {
-        return type;
+    public ArrayList<String> getTypePassAllowed() {
+        return typePassAllowed;
     }
 
-    public void setType(String type){
-        this.type = type;
-    }*/
+    public void setTypePassAllowed(ArrayList<String> typePassAllowed){
+        this.typePassAllowed = typePassAllowed;
+    }
 
     public int getSeatsNumber() {
         return seatsNumber;
@@ -39,6 +35,18 @@ public class Transport {
         this.seatsNumber = seatsNumber;
     }
 
+    Transport(Transport ob) { // передача объекта конструктору
+        name = ob.name;
+        seatsNumber = ob.seatsNumber;
+    }
+
+    public Transport (){
+
+    }
+
+    public Transport(int seats){
+        seatsNumber = seats;
+    }
 
 
 }
